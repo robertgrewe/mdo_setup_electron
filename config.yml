@@ -1,0 +1,81 @@
+############################################
+# Config file for: 
+#    'init_optimization_turbine.py'
+#    
+# Version 'swd_alpha'
+############################################
+
+# General settings
+
+# directory name to which the setup is written to
+dirname: 'myTurbineProcessChain'        # String
+
+# Define for what tool the setup is to be written for
+optimizer: 'HEEDs' # String, Chose one of these: ['HEEDs', 'AutoOpti'].
+
+# Optifoil Airfoil Geometry Set Up for All Operating Points
+Optifoil: # Requires a CFD Discipline to be set within the Process Chain Setups
+    set_config_resolution: single_row # <-- Write optifoil_config.yml files with a specific resolution (DEFAULT: single_row) (CHOOSE FROM: ['single_row', 'restagger_only'])
+    rows: ['r4'] # <-- Select row(s) to be used in Optifoil (DEFAULT: ['r4']) (CHOOSE FROM: ['s1', 'r1', 's2', 'r2', 's3', 'r3', 's4', 'r4'])
+
+# Analysis Row (Applies to CAD, CHT and MIL)
+analysis_row: r4
+
+# Process chain definition
+setups:
+
+    # --------------------------------------------------------------------------------------------
+    OP1:  # First operating point ... please name as you like
+        
+        # MULTI-ROW POSSIBLE
+        CFD:
+                path_to_GAT3003_SID_EXPORT: ./INPUT/CFD/GAT3003_SID # <-- insert absolute path
+        
+        # SINGLE ROW ONLY
+        CAD:
+                release: alpha # <-- Select version to use. (DEFAULT: alpha) (CHOOSE FROM: ['prod', 'beta', 'alpha'])
+                sblade_version: 3.0 # <-- Select 'SBlade' version to use. (DEFAULT: 3.0) (CHOOSE FROM: ['1.0', '2.0', '3.0'])
+                path_to_CAE_FILE: None # <-- insert absolute path to CAE file (eg. nxblade.CAE) which is stored at the same level as the 'template' directory containing the S-Blade (hybrid)
+                
+        # SINGLE ROW ONLY 
+        CHT:
+                path_to_CHT_EXPORT: ./INPUT/CHT # <-- insert absolute path
+                path_to_CAD_final_part: some_final_part.prt # <-- path to final CAD part required
+                
+        # SINGLE ROW ONLY
+        MIL:  # Requires CAD Discipline and filepath_to_CAE_FILE to be set: 
+                path_to_MIL_EXPORT: ./INPUT/MIL # <-- insert absolute path   # containing S-Blade / ansysEdit.py
+                
+        # MULTI-ROW POSSIBLE
+        AEM:
+                path_to_GAT3003_SID_CASE: ./INPUT/AEM # <-- insert absolute path
+
+    # --------------------------------------------------------------------------------------------
+    # OP2:    # First operating point ... please name as you like
+    # 
+    #     # MULTI-ROW POSSIBLE
+    #     CFD:
+    #             path_to_GAT3003_SID_EXPORT: ./INPUT/CFD/GAT3003_SID # <-- insert absolute path
+    #     
+    #     # SINGLE ROW ONLY
+    #     CAD:
+    #             filepath_to_CAE_FILE: ./INPUT/CAD  # <-- insert absolute path to CAE file (eg. nxblade.CAE) which is stored at the same level as the 'template' directory containing the S-Blade (hybrid) templates 
+    #             sblade_version: 3.0      #
+    #             sblade_release: alpha      #
+    #             
+    #     # SINGLE ROW ONLY 
+    #     CHT:
+    #             path_to_CHT_EXPORT: ./INPUT/CHT # <-- insert absolute path
+    #             
+    #     # SINGLE ROW ONLY
+    #     MIL:  # Requires CAD Discipline and filepath_to_CAE_FILE to be set: 
+    #             path_to_MIL_EXPORT: ./INPUT/MIL # <-- insert absolute path   # containing S-Blade / ansysEdit.py
+    #             
+    #     # MULTI-ROW POSSIBLE
+    #     AEM:
+    #             path_to_GAT3003_SID_CASE: ./INPUT/AEM # <-- insert absolute path
+    # 
+    # --------------------------------------------------------------------------------------------
+    # LowResMesh:    # Low resolution mesh ... please name as you like
+    #     CFD: 
+    # ...
