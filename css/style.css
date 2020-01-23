@@ -63,8 +63,8 @@ img {
   width: 826px;
   height: 620px;
   padding: 63px 90px 0;
-  /* background: #fff; */
-  background: #010923;
+  background: #fff;
+  /* background: #010923; */
   /* opacity: 0.85; */
   }
 
@@ -99,8 +99,8 @@ img {
 h3 {
   font-family: "Lato-Black";
   font-size: 20px;
-  /* color: #333; */
-  color: #999;
+  color: #333;
+  /* color: #999; */
   text-transform: uppercase;
   text-align: center;
   font-weight: 900;
