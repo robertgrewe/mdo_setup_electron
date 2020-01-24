@@ -103,7 +103,7 @@
 
 									<div class="form-row" style="display: block">
 										<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
-											<p style="border:3px; border-style:solid; border-color:#8eb852; color: #33363f; font-size: 3rem; display: inline-block; border-radius: 10px; padding: 1em;">R1</p>
+											<p style="border:3px; box-shadow: inset 0px 0px 6px 0px; border-style:solid; border-color:#8eb852; color: #33363f; font-size: 3rem; display: inline-block; border-radius: 10px; padding: 1em;">R1</p>
 										</div>
 									</div>
 
@@ -144,11 +144,36 @@
             </form>
 		</div>
 
+		<script>
+
+		<!-- // default -->
+		document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
+		document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
+
+		  <!-- // when HEEDs clicked -->
+		  document.getElementById("Heeds_logo").addEventListener("click", function(){
+		    document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
+		    document.getElementById("Heeds_logo").style.filter = ""
+		    document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
+
+		  });
+
+		  <!-- // when AutoOpti clicked -->
+		  document.getElementById("AutoOpti_logo").addEventListener("click", function(){
+		    document.getElementById("AutoOpti_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
+		    document.getElementById("AutoOpti_logo").style.filter = ""
+		    document.getElementById("Heeds_logo").style.filter = "grayscale(100%)"
+
+		  });
+
+		</script>
+
 		<script src="js/jquery-3.3.1.min.js"></script>
 
 		<!-- JQUERY STEP -->
 		<script src="js/jquery.steps.js"></script>
 
+ 		<!-- if commented then the above code works -->
 		<script src="js/main.js"></script>
 
 <!-- Template created and distributed by Colorlib -->
