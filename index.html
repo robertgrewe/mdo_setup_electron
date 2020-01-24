@@ -97,19 +97,19 @@
 
 									<div class="form-row" style="display: block">
 											<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
-												<i class="fas fa-chevron-up fa-lg" style="color: coral; vertical-align: middle"></i>
+												<i class="fas fa-chevron-up fa-lg" id="arrow_upp" style="color: coral; vertical-align: middle"></i>
 											</div>
 									</div>
 
 									<div class="form-row" style="display: block">
 										<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
-											<p style="border:3px; box-shadow: inset 0px 0px 6px 0px; border-style:solid; border-color:#8eb852; color: #33363f; font-size: 3rem; display: inline-block; border-radius: 10px; padding: 1em;">R1</p>
+											<p id="row" style="border:3px; box-shadow: inset 0px 0px 6px 0px; border-style:solid; border-color:#8eb852; color: #33363f; font-size: 3rem; display: inline-block; border-radius: 10px; padding: 1em;">R1</p>
 										</div>
 									</div>
 
 									<div class="form-row" style="display: block">
 											<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
-												<i class="fas fa-chevron-down fa-lg" style="color: coral"></i>
+												<i class="fas fa-chevron-down fa-lg" id="arrow_down" style="color: coral"></i>
 											</div>
 									</div>
 
@@ -146,6 +146,8 @@
 
 		<script>
 
+			<!-- logo responsiveness -->
+
 		<!-- // default -->
 		document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
 		document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
@@ -166,6 +168,30 @@
 
 		  });
 
+			<!-- arrows responsiveness -->
+
+			<!-- define choosable row names -->
+			var rows = ["R1", "S1", "R2", "S2", "R3", "S3", "R4", "S4"];
+
+			<!-- array rotate function -->
+			function arrayRotate(arr, reverse) {
+			  if (reverse) arr.unshift(arr.pop());
+			  else arr.push(arr.shift());
+			  return arr;
+			}
+
+			<!-- when arrow_up clicked -->
+		  document.getElementById("arrow_upp").addEventListener("click", function(){
+				rows = arrayRotate(rows);	<!-- move through row -->
+				document.getElementById("row").innerHTML = rows[0]
+		  });
+
+			<!-- when arrow_down clicked -->
+			document.getElementById("arrow_down").addEventListener("click", function(){
+				rows = arrayRotate(rows, true);	<!-- move through row -->
+				document.getElementById("row").innerHTML = rows[0]
+			});
+
 		</script>
 
 		<script src="js/jquery-3.3.1.min.js"></script>
@@ -174,7 +200,7 @@
 		<script src="js/jquery.steps.js"></script>
 
  		<!-- if commented then the above code works -->
-		<script src="js/main.js"></script>
+		<!-- <script src="js/main.js"></script> -->
 
 <!-- Template created and distributed by Colorlib -->
 </body>
