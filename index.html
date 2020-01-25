@@ -150,7 +150,7 @@
 		<script src="js/jquery.steps.js"></script>
 
  		<!-- if commented then the above code works -->
-		<!-- <script src="js/main.js"></script> -->
+		<script src="js/main.js"></script>
 
 		<script>
 
@@ -199,6 +199,27 @@
 				rows = arrayRotate(rows, true);	<!-- move through row -->
 				document.getElementById("row").innerHTML = rows[0]
 			});
+
+
+      // electron browser
+			// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
+      document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('choose-dir').addEventListener('click', function () {
+          openFile();
+        });
+      });
+      const {ipcRenderer} = require('electron');
+
+      function openFile() {
+        ipcRenderer.send('openFolder', () => {
+          console.log("Event sent.");
+        });
+      }
+
+      ipcRenderer.on('folderData', (event, data) => {
+        console.log(data)
+      })
+
 
 		</script>
 

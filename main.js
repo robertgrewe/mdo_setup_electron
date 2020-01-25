@@ -1,6 +1,7 @@
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+
 //const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
@@ -10,10 +11,14 @@ let win;
 
 function createWindow () {
 
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({width: 1200,
+                          height: 700,
+                          // icon: __dirname + ‘/images/favicon.png’ // does not work!!!
+                          })
+  win.setMenu(null); //switch of menu
 
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'landing_page.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -38,3 +43,20 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+
+const {ipcMain} = require('electron')
+
+ipcMain.on('openFolder', (event, path) => {
+ const {dialog} = require('electron')
+
+  dialog.showOpenDialog(win, {
+    properties: ['openDirectory']
+  },
+    paths => respondWithPath(paths)
+  );
+
+function respondWithPath(paths) {
+  event.sender.send('folderData', paths)
+}
+})
