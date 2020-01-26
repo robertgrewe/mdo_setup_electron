@@ -59,6 +59,26 @@ img {
   max-width: 100%;
   vertical-align: middle; }
 
+/* logos */
+.div-logo{
+  display: block;
+  margin: auto;
+  width: 110px;
+  }
+
+.img-logo{
+  width: 100px;
+  height: 100px;
+}
+
+.div0-logo{
+  display: block;
+  margin: auto;
+  width: 110px;
+  }
+
+/* else */
+
 .wrapper {
   width: 826px;
   height: 620px;
