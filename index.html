@@ -59,14 +59,14 @@
 								<!-- iOS type slider -->
 								<div class="checkbox checkbox-slider--b-flat checkbox-slider" style="padding-right: 10px;">
 									<label style="padding-left: 0px;">
-										<input type="checkbox" id="toggle_cfd"><span></span>
+										<input type="checkbox" id="toggle_cfd" onclick="myFunction()"><span></span>
 									</label>
 								</div>
 
 							</div>
 						</div>
 
-					<div class="div-discipline-holder">
+					<div class="div-discipline-holder" id=div_discipline_cfd>
 						<div class="form-holder">
 								<i class="fas fa-folder-open"></i>
 								<input type="text" class="form-control" id="choose-dir" placeholder="Click here to choose directory" width=100>
@@ -181,26 +181,25 @@
 
 		});
 
-		<!-- enable/disable discipline -->
-		document.getElementById("toggle_cfd").addEventListener("click", function(){
-			alert("enabled")
-		});
-		<!-- document.getElementById("myDIV").classList.add("mystyle"); -->
+		// enable/disable discipline
+		function myFunction() {
+			var element = document.getElementById("div_discipline_cfd");
+			element.classList.toggle("div-discipline-holder");
+		}
 
+		// arrows responsiveness in row name text box
 
-		<!-- arrows responsiveness -->
-
-		<!-- define choosable row names -->
+		// define choosable row names
 		var rows = ["R1", "S1", "R2", "S2", "R3", "S3", "R4", "S4"];
 
-		<!-- array rotate function -->
+		// array rotate function
 		function arrayRotate(arr, reverse) {
 			if (reverse) arr.unshift(arr.pop());
 			else arr.push(arr.shift());
 			return arr;
 		}
 
-		<!-- when arrow_up clicked -->
+		// when arrow_up clicked
 		document.getElementById("arrow_upp").addEventListener("click", function(){
 			rows = arrayRotate(rows);	<!-- move through row -->
 			document.getElementById("row").innerHTML = rows[0]
