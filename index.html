@@ -1,213 +1,240 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>FormWizard_v8</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="colorlib.com">
+<head>
+	<meta charset="utf-8">
+	<title>FormWizard_v8</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="colorlib.com">
 
-		<!-- MATERIAL DESIGN ICONIC FONT -->
-		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
 
-		<!-- DATE-PICKER -->
-		<link rel="styleshfeet" href="vendor/date-picker/css/datepicker.min.css">
+	<!-- DATE-PICKER -->
+	<link rel="styleshfeet" href="vendor/date-picker/css/datepicker.min.css">
 
-		<!-- Awesome font -->
-		<script src="https://kit.fontawesome.com/b2c35eef8d.js" crossorigin="anonymous"></script>
+	<!-- Awesome font -->
+	<script src="https://kit.fontawesome.com/b2c35eef8d.js" crossorigin="anonymous"></script>
 
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
 
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="css/style.css">
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="css/style.css">
 
-	</head>
-	<body>
-		<div class="wrapper">
-        <form action="" id="wizard">
+	<!-- see https://jsfiddle.net/njyrmdo6 -->
+	<link rel="stylesheet" href="css/slider.css">
 
-							<!-- SECTION 0 -->
-							<h4></h4>
-							<section>
-									<h3>Working directory</h3>
+</head>
+<body>
 
-										<div class="form-holder">
+	<div class="wrapper">
+		<form action="" id="wizard">
 
-											<div class="form-row">
-												<i class="fas fa-folder-open"></i>
-												<input type="text" class="form-control" id="choose-dir" placeholder="Click here to choose directory" width=100>
-											</div>
-										</div>
+			<!-- SECTION 0 -->
+			<h4></h4>
+			<section>
+				<h3>Working directory</h3>
 
-							</section>
+				<div class="form-holder">
+					<div class="form-row">
+						<i class="fas fa-folder-open"></i>
+						<input type="text" class="form-control" id="choose-dir" placeholder="Click here to choose directory" width=100>
+					</div>
+				</div>
 
-							<!-- SECTION 0 -->
-							<h4></h4>
-							<section>
-									<h3>Optimizer</h3>
+				<div class="form-row">
+				</div>
 
-									<div class="form-row">
+				<div>
 
-										<div class="div0-logo">
-											<div class="img-thumbnail div-logo">
-												<img class="img-logo" src="images/Heeds_logo.png" id="Heeds_logo" alt="...">
-											</div>
-										</div>
+						<div class="container">
+							<div class="row">
 
-										<div class="div0-logo">
-											<div class="img-thumbnail div-logo">
-												<img class="img-logo" src="images/AutoOpti_logo.png" id="AutoOpti_logo" alt="...">
-											</div>
-										</div>
+								<!-- label -->
+								<div class="col-sm button" style="color: black;  font-weight: bold;">
+									CFD - Aerodynamics
+								</div>
 
-									</div>
+								<!-- iOS type slider -->
+								<div class="checkbox checkbox-slider--b-flat checkbox-slider" style="padding-right: 10px;">
+									<label style="padding-left: 0px;">
+										<input type="checkbox" id="toggle_cfd"><span></span>
+									</label>
+								</div>
 
-							</section>
+							</div>
+						</div>
 
-							<!-- SECTION 0 -->
-							<h4></h4>
-							<section>
-									<h3>Turbine Row</h3>
+					<div class="div-discipline-holder">
+						<div class="form-holder">
+								<i class="fas fa-folder-open"></i>
+								<input type="text" class="form-control" id="choose-dir" placeholder="Click here to choose directory" width=100>
+							</div>
+					</div>
 
-									<div class="form-row" style="display: block">
-											<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
-												<i class="fas fa-chevron-up fa-lg chevron" id="arrow_upp"></i>
-											</div>
-									</div>
+				</div>
 
-									<div class="form-row" style="display: block">
-										<div style="font-size: 30px; text-align: center">
-											<p class="row-name-box" id="row">R1</p>
-										</div>
-									</div>
+			</section>
 
-									<div class="form-row" style="display: block">
-											<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
-												<i class="fas fa-chevron-down fa-lg chevron" id="arrow_down"></i>
-											</div>
-									</div>
+			<!-- SECTION 0 -->
+			<h4></h4>
+			<section>
+				<h3>Optimizer</h3>
 
-							</section>
+				<div class="form-row">
 
-							<!-- SECTION 0 -->
-							<h4></h4>
-							<section>
-									<h3>Disciplines</h3>
+					<div class="div0-logo">
+						<div class="img-thumbnail div-logo">
+							<img class="img-logo" src="images/Heeds_logo.png" id="Heeds_logo" alt="...">
+						</div>
+					</div>
 
-									<div class="form-row">
+					<div class="div0-logo">
+						<div class="img-thumbnail div-logo">
+							<img class="img-logo" src="images/AutoOpti_logo.png" id="AutoOpti_logo" alt="...">
+						</div>
+					</div>
 
-										<div class="custom-control custom-switch">
-										  <input type="checkbox" class="custom-control-input" id="customSwitch1">
-										  <label class="custom-control-label" for="customSwitch1">CFD</label>
-										</div>
-									</div>
+				</div>
 
-									<div class="form-row">
+			</section>
 
-										<div class="custom-control custom-switch">
-										  <input type="checkbox" class="custom-control-input" id="customSwitch2">
-										  <label class="custom-control-label" for="customSwitch2">CAD</label>
-										</div>
+			<!-- SECTION 0 -->
+			<h4></h4>
+			<section>
+				<h3>Turbine Row</h3>
 
-									</div>
+				<div class="form-row" style="display: block">
+					<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
+						<i class="fas fa-chevron-up fa-lg chevron" id="arrow_upp"></i>
+					</div>
+				</div>
 
-							</section>
+				<div class="form-row" style="display: block">
+					<div style="font-size: 30px; text-align: center">
+						<p class="row-name-box" id="row">R1</p>
+					</div>
+				</div>
 
-							<!-- SECTION 0 -->
-							<h4></h4>
-							<section>
-									<h3>Setup finished!</h3>
+				<div class="form-row" style="display: block">
+					<div style="font-size: 30px; padding-left: 20px ; padding-right: 20px; text-align: center">
+						<i class="fas fa-chevron-down fa-lg chevron" id="arrow_down"></i>
+					</div>
+				</div>
 
-									<div class="icon-box" style="text-align: center">
-										<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-										<i class="material-icons" style="font-size: 60px;">&#xE876</i>
-									</div>
+			</section>
 
-							</section>
+			<!-- SECTION 0 -->
+			<h4></h4>
+			<section>
+				<h3>Disciplines</h3>
 
-            </form>
-		</div>
 
-		<script src="js/jquery-3.3.1.min.js"></script>
 
-		<!-- JQUERY STEP -->
-		<script src="js/jquery.steps.js"></script>
+			</section>
 
- 		<!-- if commented then the above code works -->
-		<!-- <script src="js/main.js"></script> -->
+			<!-- SECTION 0 -->
+			<h4></h4>
+			<section>
+				<h3>Setup finished!</h3>
 
-		<script>
+				<div class="icon-box" style="text-align: center">
+					<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+					<i class="material-icons" style="font-size: 60px;">&#xE876;</i>
+				</div>
 
-			<!-- logo responsiveness -->
+			</section>
+
+		</form>
+	</div>
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+
+	<!-- JQUERY STEP -->
+	<script src="js/jquery.steps.js"></script>
+
+	<!-- if commented then the above code works -->
+	<script src="js/main.js"></script>
+
+	<script>
+
+		<!-- logo responsiveness -->
 
 		<!-- // default -->
 		document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
 		document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
 
-		  <!-- // when HEEDs clicked -->
-		  document.getElementById("Heeds_logo").addEventListener("click", function(){
-		    document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
-		    document.getElementById("Heeds_logo").style.filter = ""
-		    document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
+		<!-- // when HEEDs clicked -->
+		document.getElementById("Heeds_logo").addEventListener("click", function(){
+			document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
+			document.getElementById("Heeds_logo").style.filter = ""
+			document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
 
-		  });
+		});
 
-		  <!-- // when AutoOpti clicked -->
-		  document.getElementById("AutoOpti_logo").addEventListener("click", function(){
-		    document.getElementById("AutoOpti_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
-		    document.getElementById("AutoOpti_logo").style.filter = ""
-		    document.getElementById("Heeds_logo").style.filter = "grayscale(100%)"
+		<!-- // when AutoOpti clicked -->
+		document.getElementById("AutoOpti_logo").addEventListener("click", function(){
+			document.getElementById("AutoOpti_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
+			document.getElementById("AutoOpti_logo").style.filter = ""
+			document.getElementById("Heeds_logo").style.filter = "grayscale(100%)"
 
-		  });
+		});
 
-			<!-- arrows responsiveness -->
+		<!-- enable/disable discipline -->
+		document.getElementById("toggle_cfd").addEventListener("click", function(){
+			alert("enabled")
+		});
+		<!-- document.getElementById("myDIV").classList.add("mystyle"); -->
 
-			<!-- define choosable row names -->
-			var rows = ["R1", "S1", "R2", "S2", "R3", "S3", "R4", "S4"];
 
-			<!-- array rotate function -->
-			function arrayRotate(arr, reverse) {
-			  if (reverse) arr.unshift(arr.pop());
-			  else arr.push(arr.shift());
-			  return arr;
-			}
+		<!-- arrows responsiveness -->
 
-			<!-- when arrow_up clicked -->
-		  document.getElementById("arrow_upp").addEventListener("click", function(){
-				rows = arrayRotate(rows);	<!-- move through row -->
-				document.getElementById("row").innerHTML = rows[0]
-		  });
+		<!-- define choosable row names -->
+		var rows = ["R1", "S1", "R2", "S2", "R3", "S3", "R4", "S4"];
 
-			<!-- when arrow_down clicked -->
-			document.getElementById("arrow_down").addEventListener("click", function(){
-				rows = arrayRotate(rows, true);	<!-- move through row -->
-				document.getElementById("row").innerHTML = rows[0]
+		<!-- array rotate function -->
+		function arrayRotate(arr, reverse) {
+			if (reverse) arr.unshift(arr.pop());
+			else arr.push(arr.shift());
+			return arr;
+		}
+
+		<!-- when arrow_up clicked -->
+		document.getElementById("arrow_upp").addEventListener("click", function(){
+			rows = arrayRotate(rows);	<!-- move through row -->
+			document.getElementById("row").innerHTML = rows[0]
+		});
+
+		<!-- when arrow_down clicked -->
+		document.getElementById("arrow_down").addEventListener("click", function(){
+			rows = arrayRotate(rows, true);	<!-- move through row -->
+			document.getElementById("row").innerHTML = rows[0]
+		});
+
+
+		// electron browser
+		// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
+		document.addEventListener('DOMContentLoaded', function () {
+			document.getElementById('choose-dir').addEventListener('click', function () {
+				openFile();
 			});
+		});
+		const {ipcRenderer} = require('electron');
+
+		function openFile() {
+			ipcRenderer.send('openFolder', () => {
+				console.log("Event sent.");
+			});
+		}
+
+		ipcRenderer.on('folderData', (event, data) => {
+			console.log(data)
+		})
 
 
-      // electron browser
-			// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
-      document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('choose-dir').addEventListener('click', function () {
-          openFile();
-        });
-      });
-      const {ipcRenderer} = require('electron');
+	</script>
 
-      function openFile() {
-        ipcRenderer.send('openFolder', () => {
-          console.log("Event sent.");
-        });
-      }
-
-      ipcRenderer.on('folderData', (event, data) => {
-        console.log(data)
-      })
-
-
-		</script>
-
-<!-- Template created and distributed by Colorlib -->
+	<!-- Template created and distributed by Colorlib -->
 </body>
 </html>
