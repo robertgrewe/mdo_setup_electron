@@ -79,7 +79,3 @@ $(function(){
         $button.parent().find("input").val(newVal);
     });
 })
-
-// document.getElementById("AutoOpti_logo").style.border = "solid"
-// document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
-// document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #8eb852"
