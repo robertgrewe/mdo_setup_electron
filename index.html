@@ -219,6 +219,8 @@
 				openFile();
 			});
 		});
+
+
 		const {ipcRenderer} = require('electron');
 
 		function openFile() {
@@ -230,7 +232,6 @@
 		ipcRenderer.on('folderData', (event, data) => {
 			console.log(data)
 		})
-
 
 	</script>
 

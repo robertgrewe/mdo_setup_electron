@@ -36,9 +36,12 @@
                   <div class="col-sm-6 col-md-6 col-lg-4">
                       <div class="al-service-box pt-5 pb-4 px-5 text-center">
                           <span class="al-service-icon"> <i class="fa fa-cloud-download" aria-hidden="true"></i></span>
-                          <h3 class="mt-3"> Ingrdients</h3>
+                          <h3 class="mt-3"> Ingredients</h3>
                           <p class="mt-3">Use ACES to download all case specific input files. </p>
                           <a href="#" class="btn btn-outline-primary mt-3" id="button_launch_aces" >Launch ACES</a>
+                          <div class="" style="padding-top: 20px;">
+                            <a href="" onclick="openURL(url='https://code.siemens.com/gten/opt_tools/-/wikis/ACES-Applied-Process-for-opt_aces_update_row')">Learn more</a>
+                          </div>
                       </div>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-4">
@@ -49,6 +52,9 @@
                           <h3 class="mt-3"> Setup</h3>
                           <p class="mt-3">Step through process chain setup procedure. </p>
                           <a href="index.html" class="btn btn-outline-primary mt-3">Start</a>
+                          <div class="" style="padding-top: 20px;">
+                            <a href="">Learn more</a>
+                          </div>
                       </div>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-4">
@@ -57,7 +63,10 @@
 
                           <h3 class="mt-3"> Monitoring</h3>
                           <p class="mt-3">Monitor your optimization in MOIKA. </p>
-                          <a href="https://moika.siemens.net/auth/index.html" class="btn btn-outline-primary mt-3">Open MOIKA</a>
+                          <a href="" class="btn btn-outline-primary mt-3" onclick="openURL(url='https://moika.siemens.net/auth/index.html')">Open MOIKA</a>
+                          <div class="" style="padding-top: 20px;">
+                            <a href="" onclick="openURL(url='https://www.gecot.siemens.net/wiki_gen/index.php/Moika')">Learn more</a>
+                          </div>
                       </div>
                   </div>
               </div>
@@ -71,6 +80,22 @@
 		  document.getElementById("button_launch_aces").addEventListener("click", function(){
 		    alert("This alert will be replaced with launching ACES.")
 		  });
+
+      // open URL
+  		function openURL(url) {
+  			// const { shell } = require('electron')
+  			const {shell} = require('electron');
+  			shell.openExternal(url)
+  		}
+
+      // alert("test")
+      //
+      // const { spawn } = require('child_process');
+      // const ls = spawn('ls', ['-lh', '/usr']);
+      // ls.exec()
+      // ls.on('close', (code) => {
+      //   alert(`child process exited with code ${code}`);
+      // });
 
 		</script>
 

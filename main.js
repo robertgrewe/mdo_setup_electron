@@ -16,14 +16,13 @@ function createWindow () {
                           // icon: __dirname + ‘/images/favicon.png’ // does not work!!!
                           })
   win.setMenu(null); //switch of menu
-  win.maximize(); //full screen
+  // win.maximize(); //full screen
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'landing_page.html'),
     protocol: 'file:',
     slashes: true
   }));
-
 
   win.on('closed', () => {
     win = null
@@ -33,11 +32,25 @@ function createWindow () {
 app.on('ready', createWindow);
 
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+// works
+// const { shell } = require('electron')
+// shell.openExternal('https://www.google.com')
+
+// const { exec } = require('child_process');
+// exec('/usr/bin/chromium-browser https://example.com', (error, stdout, stderr) => {
+//     if (error) {
+//         console.error(`exec error: ${error}`);
+//         return;
+//         }
+//     console.log(`stdout: ${stdout}`);
+//     console.log(`stderr: ${stderr}`);
+//     });
+//
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
 
 app.on('activate', () => {
   if (win === null) {
