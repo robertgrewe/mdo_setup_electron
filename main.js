@@ -16,6 +16,7 @@ function createWindow () {
                           // icon: __dirname + ‘/images/favicon.png’ // does not work!!!
                           })
   win.setMenu(null); //switch of menu
+  win.maximize(); //full screen
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'landing_page.html'),
