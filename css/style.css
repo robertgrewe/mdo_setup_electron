@@ -79,7 +79,8 @@ img {
 
 /* else */
 .chevron {
-  color: grey;
+  /* color: grey; */
+  color: #1b7ae8;
   vertical-align: middle;
 }
 
