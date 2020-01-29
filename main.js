@@ -15,7 +15,7 @@ function createWindow () {
                           height: 700,
                           // icon: __dirname + ‘/images/favicon.png’ // does not work!!!
                           })
-  win.setMenu(null); //switch of menu
+  //win.setMenu(null); //switch off menu
   // win.maximize(); //full screen
 
   win.loadURL(url.format({

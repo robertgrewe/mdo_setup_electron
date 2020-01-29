@@ -186,7 +186,7 @@ h3 {
   border: 1px solid #e6e6e6;
   width: 100%;
   background: none;
-  padding: 0 35px 0 19px;
+  padding: 0 70px 0 19px;
   color: #999; }
   .form-control:focus {
     border-color: #1b7ae8; }
@@ -223,7 +223,7 @@ h3 {
     font-size: 15px;
     border-radius: 3px; }
     .actions li a:hover {
-      background: #a1d15e; }
+      background: #1b7ae8; }
   .actions li:first-child a {
     width: 97px; }
   .actions li:last-child a {
