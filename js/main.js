@@ -6,7 +6,7 @@ $(function(){
         enableAllSteps: true,
         transitionEffectSpeed: 300,
         labels: {
-            next: "Continue",
+            next: "Next",
             previous: "Back",
             finish: 'Proceed to checkout'
         },

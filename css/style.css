@@ -88,7 +88,7 @@ img {
   width: 110px;
   /* height: 110px; */
   box-shadow: inset 0px 0px 6px 0px;
-  border-color:#8eb852;
+  border-color:#1b7ae8;
   color: #33363f;
   font-size: 3rem;
   display: inline-block;
@@ -188,7 +188,7 @@ h3 {
   padding: 0 35px 0 19px;
   color: #999; }
   .form-control:focus {
-    border-color: #8eb852; }
+    border-color: #1b7ae8; }
   .form-control::-webkit-input-placeholder {
     color: #999; }
   .form-control::-moz-placeholder {
@@ -211,11 +211,11 @@ h3 {
     border: none;
     display: inline-flex;
     height: 42px;
-    width: 132px;
+    width: 97px;
     align-items: center;
     color: #fff;
     cursor: pointer;
-    background: #8eb852;
+    background: #1b7ae8;
     text-transform: uppercase;
     justify-content: center;
     letter-spacing: 1px;
