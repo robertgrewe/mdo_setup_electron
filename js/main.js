@@ -1,3 +1,6 @@
+
+var currentTab = 0; // Current tab is set to be the first tab (0)
+
 $(function(){
 	$("#wizard").steps({
         headerTag: "h4",
@@ -11,41 +14,28 @@ $(function(){
             finish: 'Proceed to checkout'
         },
         onStepChanging: function (event, currentIndex, newIndex) {
-            if ( newIndex >= 1 ) {
-                $('.steps ul li:first-child a img').attr('src','images/step-1.png');
-            } else {
-                $('.steps ul li:first-child a img').attr('src','images/step-1-active.png');
-            }
 
-            if ( newIndex === 1 ) {
-                $('.steps ul li:nth-child(2) a img').attr('src','images/step-2-active.png');
-            } else {
-                $('.steps ul li:nth-child(2) a img').attr('src','images/step-2.png');
-            }
+						$(".step_circles").removeClass("active")
+						$(".step_circles").slice(0,newIndex+1).addClass("active")
 
-            if ( newIndex === 2 ) {
-                $('.steps ul li:nth-child(3) a img').attr('src','images/step-3-active.png');
-            } else {
-                $('.steps ul li:nth-child(3) a img').attr('src','images/step-3.png');
-            }
-
-            if ( newIndex === 3 ) {
-                $('.steps ul li:nth-child(4) a img').attr('src','images/step-4-active.png');
-                $('.actions ul').addClass('step-4');
-            } else {
-                $('.steps ul li:nth-child(4) a img').attr('src','images/step-4.png');
-                $('.actions ul').removeClass('step-4');
-            }
             return true;
         }
     });
+
     // Custom Button Jquery Steps
     $('.forward').click(function(){
     	$("#wizard").steps('next');
     })
+
     $('.backward').click(function(){
         $("#wizard").steps('previous');
     })
+
+		$( ".img-logo" ).click(function() {
+			$(".img-logo").removeClass("selected");	;
+			$(this).addClass("selected");
+		});
+
     // Click to see password
     $('.password i').click(function(){
         if ( $('.password input').attr('type') === 'password' ) {
@@ -55,10 +45,10 @@ $(function(){
         }
     })
     // Create Steps Image
-    $('.steps ul li:first-child').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-1-active.png" alt=""> ').append('<span class="step-order">Airfoil</span>');
-    $('.steps ul li:nth-child(2').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-2.png" alt="">').append('<span class="step-order">CAD</span>');
-    $('.steps ul li:nth-child(3)').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-3.png" alt="">').append('<span class="step-order">CFD</span>');
-    $('.steps ul li:last-child a').append('<img src="images/step-4.png" alt="">').append('<span class="step-order">CHT</span>');
+    // $('.steps ul li:first-child').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-1-active.png" alt=""> ').append('<span class="step-order">Airfoil</span>');
+    // $('.steps ul li:nth-child(2').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-2.png" alt="">').append('<span class="step-order">CAD</span>');
+    // $('.steps ul li:nth-child(3)').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-3.png" alt="">').append('<span class="step-order">CFD</span>');
+    // $('.steps ul li:last-child a').append('<img src="images/step-4.png" alt="">').append('<span class="step-order">CHT</span>');
 
 		// Count input
     $(".quantity span").on("click", function() {
@@ -79,3 +69,14 @@ $(function(){
         $button.parent().find("input").val(newVal);
     });
 })
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+	console.log(n)
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}

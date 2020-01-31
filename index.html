@@ -25,11 +25,24 @@
 	<!-- see https://jsfiddle.net/njyrmdo6 -->
 	<link rel="stylesheet" href="css/slider.css">
 
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="css/steps.css">
+
 </head>
 <body>
 
 	<div class="wrapper">
 		<form action="" id="wizard">
+
+			<!-- Circles which indicates the steps of the form: -->
+	    <div style="text-align:center; padding-top: 20px; padding-bottom: 40px">
+	      <span class="step_circles active"></span>
+	      <span class="step_circles"></span>
+	      <span class="step_circles"></span>
+	      <span class="step_circles"></span>
+	      <span class="step_circles"></span>
+	      <span class="step_circles"></span>
+	    </div>
 
 			<!-- SECTION 0 -->
 			<h4></h4>
@@ -103,13 +116,13 @@
 
 					<div class="div0-logo">
 						<div class="img-thumbnail div-logo">
-							<img class="img-logo" src="images/Heeds_logo.png" id="Heeds_logo" alt="...">
+							<img class="img-logo" src="images/Heeds_logo.png" alt="...">
 						</div>
 					</div>
 
 					<div class="div0-logo">
 						<div class="img-thumbnail div-logo">
-							<img class="img-logo" src="images/AutoOpti_logo.png" id="AutoOpti_logo" alt="...">
+							<img class="img-logo selected" src="images/AutoOpti_logo.png" alt="...">
 						</div>
 					</div>
 
@@ -178,25 +191,25 @@
 
 		<!-- logo responsiveness -->
 
-		<!-- // default -->
-		document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
-		document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
-
-		<!-- // when HEEDs clicked -->
-		document.getElementById("Heeds_logo").addEventListener("click", function(){
-			document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
-			document.getElementById("Heeds_logo").style.filter = ""
-			document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
-
-		});
-
-		<!-- // when AutoOpti clicked -->
-		document.getElementById("AutoOpti_logo").addEventListener("click", function(){
-			document.getElementById("AutoOpti_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
-			document.getElementById("AutoOpti_logo").style.filter = ""
-			document.getElementById("Heeds_logo").style.filter = "grayscale(100%)"
-
-		});
+		// <!-- // default -->
+		// document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
+		// document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
+		//
+		// <!-- // when HEEDs clicked -->
+		// document.getElementById("Heeds_logo").addEventListener("click", function(){
+		// 	document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
+		// 	document.getElementById("Heeds_logo").style.filter = ""
+		// 	document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
+		//
+		// });
+		//
+		// <!-- // when AutoOpti clicked -->
+		// document.getElementById("AutoOpti_logo").addEventListener("click", function(){
+		// 	document.getElementById("AutoOpti_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
+		// 	document.getElementById("AutoOpti_logo").style.filter = ""
+		// 	document.getElementById("Heeds_logo").style.filter = "grayscale(100%)"
+		//
+		// });
 
 		// enable/disable discipline
 		function myFunction() {
