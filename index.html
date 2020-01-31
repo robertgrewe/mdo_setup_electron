@@ -116,13 +116,13 @@
 
 					<div class="div0-logo">
 						<div class="img-thumbnail div-logo">
-							<img class="img-logo" src="images/Heeds_logo.png" alt="...">
+							<img class="img-logo selected" src="images/Heeds_logo.png" alt="...">
 						</div>
 					</div>
 
 					<div class="div0-logo">
 						<div class="img-thumbnail div-logo">
-							<img class="img-logo selected" src="images/AutoOpti_logo.png" alt="...">
+							<img class="img-logo" src="images/AutoOpti_logo.png" alt="...">
 						</div>
 					</div>
 
@@ -189,58 +189,11 @@
 
 	<script>
 
-		<!-- logo responsiveness -->
-
-		// <!-- // default -->
-		// document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
-		// document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
-		//
-		// <!-- // when HEEDs clicked -->
-		// document.getElementById("Heeds_logo").addEventListener("click", function(){
-		// 	document.getElementById("Heeds_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
-		// 	document.getElementById("Heeds_logo").style.filter = ""
-		// 	document.getElementById("AutoOpti_logo").style.filter = "grayscale(100%)"
-		//
-		// });
-		//
-		// <!-- // when AutoOpti clicked -->
-		// document.getElementById("AutoOpti_logo").addEventListener("click", function(){
-		// 	document.getElementById("AutoOpti_logo").style.boxShadow = "0px 0px 3px 3px #1b7ae8"
-		// 	document.getElementById("AutoOpti_logo").style.filter = ""
-		// 	document.getElementById("Heeds_logo").style.filter = "grayscale(100%)"
-		//
-		// });
-
 		// enable/disable discipline
 		function myFunction() {
 			var element = document.getElementById("div_discipline_cfd");
 			element.classList.toggle("div-discipline-holder");
 		}
-
-		// arrows responsiveness in row name text box
-
-		// define choosable row names
-		var rows = ["R1", "S1", "R2", "S2", "R3", "S3", "R4", "S4"];
-
-		// array rotate function
-		function arrayRotate(arr, reverse) {
-			if (reverse) arr.unshift(arr.pop());
-			else arr.push(arr.shift());
-			return arr;
-		}
-
-		// when arrow_up clicked
-		document.getElementById("arrow_upp").addEventListener("click", function(){
-			rows = arrayRotate(rows);	<!-- move through row -->
-			document.getElementById("row").innerHTML = rows[0]
-		});
-
-		<!-- when arrow_down clicked -->
-		document.getElementById("arrow_down").addEventListener("click", function(){
-			rows = arrayRotate(rows, true);	<!-- move through row -->
-			document.getElementById("row").innerHTML = rows[0]
-		});
-
 
 		// electron browser
 		// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
@@ -249,7 +202,6 @@
 				openFile();
 			});
 		});
-
 
 		const {ipcRenderer} = require('electron');
 

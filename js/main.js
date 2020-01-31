@@ -31,24 +31,35 @@ $(function(){
         $("#wizard").steps('previous');
     })
 
+		// logo responsiveness
 		$( ".img-logo" ).click(function() {
-			$(".img-logo").removeClass("selected");	;
+			$(".img-logo").removeClass("selected");
 			$(this).addClass("selected");
 		});
 
-    // Click to see password
-    $('.password i').click(function(){
-        if ( $('.password input').attr('type') === 'password' ) {
-            $(this).next().attr('type', 'text');
-        } else {
-            $('.password input').attr('type', 'password');
-        }
-    })
-    // Create Steps Image
-    // $('.steps ul li:first-child').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-1-active.png" alt=""> ').append('<span class="step-order">Airfoil</span>');
-    // $('.steps ul li:nth-child(2').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-2.png" alt="">').append('<span class="step-order">CAD</span>');
-    // $('.steps ul li:nth-child(3)').append('<img src="images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="images/step-3.png" alt="">').append('<span class="step-order">CFD</span>');
-    // $('.steps ul li:last-child a').append('<img src="images/step-4.png" alt="">').append('<span class="step-order">CHT</span>');
+		// arrows responsiveness in row name text box
+		var rows = ["R1", "S1", "R2", "S2", "R3", "S3", "R4", "S4"]; // define choosable row names
+
+		// array rotate function
+		function arrayRotate(arr, reverse) {
+			if (reverse) arr.unshift(arr.pop());
+			else arr.push(arr.shift());
+			return arr;
+		}
+
+		// when arrow_up clicked
+		$('#arrow_upp').click(function(){
+			rows = arrayRotate(rows);	// move through row
+			$("#row").text(rows[0]);
+			// console.log(rows[0])
+		})
+
+		// when arrow_down clicked
+		$('#arrow_down').click(function(){
+			rows = arrayRotate(rows, true);	// move through row
+			$("#row").text(rows[0]);
+			// console.log(rows[0])
+		})
 
 		// Count input
     $(".quantity span").on("click", function() {
@@ -69,14 +80,3 @@ $(function(){
         $button.parent().find("input").val(newVal);
     });
 })
-
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-	console.log(n)
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class to the current step:
-  x[n].className += " active";
-}
