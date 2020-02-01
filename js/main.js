@@ -1,6 +1,56 @@
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
+createDisciplineContainer('toggle_cfd', 'div_discipline_cfd', 'CFD - Aerodynamics')
+createDisciplineContainer('toggle_cad', 'div_discipline_cad', 'CAD - Geometry')
+createDisciplineContainer('toggle_cht', 'div_discipline_cht', 'CHT - Heat Transfer')
+
+// initialize wizard
+$( "#div_discipline_cfd" ).hide()
+$( "#div_discipline_cad" ).hide()
+$( "#div_discipline_cht" ).hide()
+
+// toggle discplines
+function addToggle(toggle_id, discipline_id){
+	$( '#' + toggle_id ).click(function() {
+		$( '#' + discipline_id ).slideToggle( "fast", function() {
+			// Animation complete.
+		});
+	});
+}
+
+function createDisciplineContainer(toggle_id, discipline_id, discipline_label){
+				$("#container_disciplines").append(
+				'\
+				<!-- discipline start -->\
+				<div class="container">\
+					<!-- discipline start -->\
+					<div class="container" id="container_cfd">\
+						<div class="row" style="padding-bottom: 30px">\
+							<!-- -->\
+							<!-- label -->\
+							<div class="col-sm button discipline-label">' + discipline_label + '</div>\
+							<!-- -->\
+							<!-- iOS type slider -->\
+							<div class="checkbox checkbox-slider--b-flat checkbox-slider">\
+								<label class="slider-label">\
+									<input type="checkbox" id="' + toggle_id + '"><span></span>\
+								</label>\
+							</div>\
+							<!-- -->\
+							<!-- textbox with browse button-->\
+							<div class="input-group mb-3 div-discipline-holder" id=' + discipline_id + '>\
+								<input type="text" class="form-control" placeholder="Choose GAT3003 directory">\
+								<div class="input-group-append">\
+									<button class="btn btn-outline-secondary" type="button">Browse</button>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>\
+				')
+}
+
 $(function(){
 	$("#wizard").steps({
         headerTag: "h4",
@@ -60,6 +110,11 @@ $(function(){
 			$("#row").text(rows[0]);
 			// console.log(rows[0])
 		})
+
+		// add toggle event to disciplines
+		addToggle('toggle_cfd', 'div_discipline_cfd')
+		addToggle('toggle_cad', 'div_discipline_cad')
+		addToggle('toggle_cht', 'div_discipline_cht')
 
 		// Count input
     $(".quantity span").on("click", function() {

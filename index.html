@@ -35,14 +35,14 @@
 		<form action="" id="wizard">
 
 			<!-- Circles which indicates the steps of the form: -->
-	    <div style="text-align:center; padding-top: 20px; padding-bottom: 40px">
-	      <span class="step_circles active"></span>
-	      <span class="step_circles"></span>
-	      <span class="step_circles"></span>
-	      <span class="step_circles"></span>
-	      <span class="step_circles"></span>
-	      <span class="step_circles"></span>
-	    </div>
+			<div style="text-align:center; padding-top: 20px; padding-bottom: 40px">
+				<span class="step_circles active"></span>
+				<span class="step_circles"></span>
+				<span class="step_circles"></span>
+				<span class="step_circles"></span>
+				<span class="step_circles"></span>
+				<span class="step_circles"></span>
+			</div>
 
 			<!-- SECTION 0 -->
 			<h4></h4>
@@ -56,59 +56,34 @@
 					</div>
 				</div>
 
-				<!-- <div class="form-group">
-					<div class="input-group">
-						<input type="text" name="search" class="form-control" placeholder="Choose directory">
-						<span><button type="submit" class="btn btn-primary"><i class="fas fa-folder-open"></i></button></span>
-					</div>
-				</div> -->
+				<div class="form-row" id="container_disciplines">
 
-				<!-- <div class="input-group mb-3">
-				  <div class="custom-file">
-				    <input type="file" class="custom-file-input" id="inputGroupFile02">
-				    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-				  </div>
-				  <div class="input-group-append">
-				    <span class="input-group-text" id="">Upload</span>
-				  </div>
-				</div> -->
+					<!-- discipline start -->
+					<!-- <div class="container">
+						<div class="row" style="padding-bottom: 30px"> -->
 
-				<div class="form-row">
-				</div>
+							<!-- label -->
+							<!-- <div class="col-sm button discipline-label">
+								CFD - Aerodynamics
+							</div> -->
 
-				<div>
+							<!-- iOS type slider -->
+							<!-- <div class="checkbox checkbox-slider--b-flat checkbox-slider">
+								<label class="slider-label">
+									<input type="checkbox" id="toggle_cfd"><span></span>
+								</label>
+							</div> -->
 
-						<div class="container">
-							<div class="row">
-
-								<!-- label -->
-								<div class="col-sm button" style="color: black;  font-weight: bold;">
-									CFD - Aerodynamics
+							<!-- textbox with browse button-->
+							<!-- <div class="input-group mb-3 div-discipline-holder" id=div_discipline_cfd>
+								<input type="text" class="form-control" placeholder="Choose GAT3003 directory">
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button">Browse</button>
 								</div>
+							</div> -->
 
-								<!-- iOS type slider -->
-								<div class="checkbox checkbox-slider--b-flat checkbox-slider" style="padding-left: 10px; padding-right: 10px;">
-									<label style="padding-left: 0px;">
-										<input type="checkbox" id="toggle_cfd" onclick="myFunction()"><span></span>
-									</label>
-								</div>
-
-							</div>
-						</div>
-
-					<!-- <div class="div-discipline-holder" id=div_discipline_cfd>
-						<div class="form-holder">
-								<i class="fas fa-folder-open"></i>
-								<input type="text" class="form-control" id="choose-dir-gat3003" placeholder="Choose GAT3003 directory" width=100>
-							</div>
+						<!-- </div>
 					</div> -->
-
-					<div class="input-group mb-3 div-discipline-holder" id=div_discipline_cfd>
-						<input type="text" class="form-control" placeholder="Choose GAT3003 directory">
-						<div class="input-group-append">
-							<button class="btn btn-outline-secondary" type="button">Browse</button>
-						</div>
-					</div>
 
 				</div>
 
@@ -196,32 +171,26 @@
 
 	<script>
 
-		// enable/disable discipline
-		function myFunction() {
-			var element = document.getElementById("div_discipline_cfd");
-			element.classList.toggle("div-discipline-holder");
-		}
-
-		// electron browser
-		// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
-		document.addEventListener('DOMContentLoaded', function () {
-			document.getElementById('choose-dir').addEventListener('click', function () {
-				openFile();
-			});
+	// electron browser
+	// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
+	document.addEventListener('DOMContentLoaded', function () {
+		document.getElementById('choose-dir').addEventListener('click', function () {
+			openFile();
 		});
+	});
 
-		const {ipcRenderer} = require('electron');
+	const {ipcRenderer} = require('electron');
 
-		function openFile() {
-			ipcRenderer.send('openFolder', () => {
-				console.log("Event sent.");
-			});
-		}
+	function openFile() {
+		ipcRenderer.send('openFolder', () => {
+			console.log("Event sent.");
+		});
+	}
 
-		ipcRenderer.on('folderData', (event, data) => {
-			console.log(data)
-			document.getElementById('choose-dir').value = data[0]
-		})
+	ipcRenderer.on('folderData', (event, data) => {
+		console.log(data)
+		document.getElementById('choose-dir').value = data[0]
+	})
 
 	</script>
 

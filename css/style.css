@@ -107,6 +107,13 @@ img {
   opacity: 0.5;
 }
 
+.discipline-label{
+  color: black;
+  font-weight: bold;
+  font-family: "Lato-Regular";
+  font-size: 16px;
+}
+
 .wrapper {
   width: 826px;
   height: 620px;

@@ -12,6 +12,8 @@ Slider B-flat
 *******************************************************/
 .checkbox-slider--b-flat {
   position: relative;
+  padding-left: 10px;
+  padding-right: 10px
 }
 .checkbox-slider--b-flat input {
   display: block;
