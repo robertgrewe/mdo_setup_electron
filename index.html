@@ -57,9 +57,9 @@
 
 				<!-- textbox with browse button-->
 				<div class="input-group mb-3" id=' + discipline_id + '>
-					<input type="text" class="form-control" id="choose-dir" placeholder="Choose directory">
+					<input type="text" class="form-control" id="input-work-dir" placeholder="Choose directory">
 					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button">Browse</button>
+						<button class="btn btn-outline-secondary" id="choose-dir" type="button">Browse</button>
 					</div>
 				</div>
 
@@ -151,12 +151,14 @@
 	</div>
 
 	<script src="js/jquery-3.3.1.min.js"></script>
+	<script>window.$ = window.jQuery = require('./js/jquery-3.3.1.min.js');</script>
 
 	<!-- JQUERY STEP -->
 	<script src="js/jquery.steps.js"></script>
+	<script>window.$ = window.jQuery = require('./js/jquery.steps.js');</script>
 
-	<!-- if commented then the above code works -->
 	<script src="js/main.js"></script>
+	<script>window.$ = window.jQuery = require('.js/main.js');</script>
 
 	<script>
 
@@ -178,8 +180,22 @@
 
 	ipcRenderer.on('folderData', (event, data) => {
 		console.log(data)
-		document.getElementById('choose-dir').value = data[0]
+		document.getElementById('input-work-dir').value = data[0]
+
+		var filename_config = 'config.yml'
+		var content = document.getElementById('input-work-dir').value = data[0]
+		writeToFile(filename_config, content)
+
 	})
+
+	// write data to file
+	function writeToFile(filename, content){
+		var fs = require('fs');
+		fs.writeFile(filename, content, function (err) {
+			if (err) throw err;
+			console.log('Replaced!');
+		});
+	}
 
 	</script>
 

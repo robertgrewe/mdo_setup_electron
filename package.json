@@ -11,5 +11,8 @@
     "start": "electron .",
     "package-win": "electron-packager . mdo-setup-app --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MDO Setup App\"",
     "package-linux": "electron-packager . mdo-setup-app --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
