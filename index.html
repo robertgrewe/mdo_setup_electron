@@ -48,20 +48,21 @@
 			<section>
 				<h3>Working directory</h3>
 
-				<div class="form-holder">
+				<!-- <div class="form-holder">
 					<div class="form-row">
 						<i class="fas fa-folder-open"></i>
 						<input type="text" class="form-control" id="choose-dir" placeholder="Choose directory" width=100 align=right>
 					</div>
+				</div> -->
+
+				<!-- textbox with browse button-->
+				<div class="input-group mb-3" id=' + discipline_id + '>
+					<input type="text" class="form-control" id="choose-dir" placeholder="Choose directory">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button">Browse</button>
+					</div>
 				</div>
 
-				<p>
-					<a href="#" class="btn btn-primary"><span class="fas fa-terminal"></span>Open Terminal</a>
-				</p>
-
-				<p>
-					<a href="#" class="btn btn-primary"><span class="fas fa-rocket"></span>Launch HEEDs</a>
-				</p>
 			</section>
 
 			<!-- SECTION 0 -->
@@ -127,9 +128,21 @@
 			<section>
 				<h3>Setup finished!</h3>
 
-				<div class="icon-box" style="text-align: center">
+				<div class="icon-box" style="text-align: center; padding: 40px">
 					<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 					<i class="material-icons" style="font-size: 60px;">&#xE876;</i>
+				</div>
+
+				<div style="display: grid; justify-content: center;">
+					<div class="form-row">
+						<p style="padding: 40px">
+							<a href="#" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Open in Terminal</a>
+						</p>
+
+						<p style="padding: 40px">
+							<a href="#" class="btn btn-my"><span class="fas fa-rocket" style="padding-right: 10px;"></span> Open in HEEDs</a>
+						</p>
+					</div>
 				</div>
 
 			</section>

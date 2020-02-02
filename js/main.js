@@ -67,6 +67,7 @@ $(function(){
         transitionEffect: "fade",
         enableAllSteps: true,
         transitionEffectSpeed: 300,
+				enableFinishButton: false,
         labels: {
             next: "Next",
             previous: "Back",
@@ -89,6 +90,8 @@ $(function(){
     $('.backward').click(function(){
         $("#wizard").steps('previous');
     })
+
+		$("div.actions").insertBefore("div.content");
 
 		// logo responsiveness
 		$( ".img-logo" ).click(function() {
