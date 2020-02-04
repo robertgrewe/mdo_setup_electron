@@ -29,7 +29,7 @@ function addToggle(toggle_id, discipline_id){
 
 function createDisciplineContainer(toggle_id, discipline_id, discipline_label, name, placeholder){
 
-				console.log(placeholder)
+				// console.log(placeholder)
 				$("#container_disciplines").append(
 				'\
 				<!-- discipline start -->\
