@@ -57,17 +57,21 @@
 				<!-- <div class="form-holder">
 					<div class="form-row">
 						<i class="fas fa-folder-open"></i>
-						<input type="text" class="form-control" id="choose-dir" placeholder="Choose directory" width=100 align=right>
+						<input type="text" name="testname" class="form-control" id="choose-dir" placeholder="Choose directory" width=100 align=right>
 					</div>
 				</div> -->
 
 				<!-- textbox with browse button-->
 				<div class="input-group mb-3" id=' + discipline_id + '>
-					<input type="text" class="form-control" id="input-work-dir" placeholder="Choose directory">
+					<input type="text" class="form-control" name="wdir" id="input-work-dir" placeholder="Choose directory">
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" id="choose-dir" type="button">Browse</button>
 					</div>
 				</div>
+
+				<p style="padding: 40px">
+					<a href="#" id="create" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Create setup</a>
+				</p>
 
 			</section>
 
@@ -107,7 +111,7 @@
 
 				<div class="form-row" style="display: block">
 					<div style="font-size: 30px; text-align: center">
-						<p class="row-name-box" id="row">R1</p>
+						<p class="row-name-box" name="row" id="row">R1</p>
 					</div>
 				</div>
 
@@ -166,22 +170,31 @@
 	// see https://github.com/paul7337/Electron-Get-Folder-Path/blob/master/main.js
 	// document.addEventListener('DOMContentLoaded', function () {
 	// 	document.getElementById('choose-dir').addEventListener('click', function () {
-	// 		openFile();
+	// 		selectFolder();
 	// 		console.log("After open.")
 	// 	});
 	// });
 
-	// const {bodyParser}= require('body-parser')
 	const {ipcRenderer} = require('electron');
 
 	$( document ).ready(function() {
 		$('#choose-dir').click(function () {
-			openFile();
-			console.log("After open.");
+			selectFolder();
 		});
+
+		$('#choose-dir-test').click(function () {
+			selectFolder();
+			console.log("browse-dir-test");
+		});
+
+		$('#create').click(function () {
+			collectFormData()
+		});
+
 	});
 
-	function openFile() {
+
+	function selectFolder() {
 		ipcRenderer.send('openFolder', () => {
 			console.log("Event sent.");
 		});
@@ -190,11 +203,7 @@
 	ipcRenderer.on('folderData', (event, data) => {
 		console.log(data)
 		document.getElementById('input-work-dir').value = data[0]
-
-		var filename_config = 'config.yml'
-		var content = document.getElementById('input-work-dir').value = data[0]
-		writeToFile(filename_config, content)
-
+		// $( "input#input-work-dir" ).val(data[0]) jquery alternative
 	})
 
 	// write data to file
@@ -202,8 +211,59 @@
 		var fs = require('fs');
 		fs.writeFile(filename, content, function (err) {
 			if (err) throw err;
-			console.log('Replaced!');
+			console.log(content);
 		});
+	}
+
+	// collect form data
+	function collectFormData(){
+
+		// var content_array = $('form').serializeArray()
+		// console.log(content_array[0].name, content_array[0].value)
+
+		var row = $('#row').text()
+
+		// create example yml data
+		let data = {
+			dirname: 'myTurbineProcessChain',
+			optimizer: 'HEEDs',
+			Optifoil:  {
+				set_config_resolution: 'single_row',
+				rows: ['r4'],
+			},
+			analysis_row: row,
+			setups: {
+				OP1: {
+					CFD: {
+						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
+					},
+					CAD: {
+						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
+					},
+					CHT: {
+						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
+					},
+					MIL: {
+						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
+					},
+					AEM: {
+						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
+					},
+				},
+			},
+		};
+
+		// write.js
+		const fs = require('fs');
+		const yaml = require('js-yaml');
+
+		let yamlStr = yaml.safeDump(data);
+		var filename_config = 'config_new.yml'
+		fs.writeFileSync(filename_config, yamlStr, 'utf8');
+
+		var content = JSON.stringify(content_array)
+		// writeToFile(filename, content)
+		// console.log("Data written to config.yml.")
 	}
 
 	</script>
