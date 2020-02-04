@@ -1,14 +1,15 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
 // define discipline constructor
-function discipline(toggle_id, discipline_id, label, placeholder) {
+function discipline(toggle_id, discipline_id, label, name, placeholder) {
   this.toggle_id = toggle_id;
   this.discipline_id = discipline_id;
   this.label = label;
+  this.name = name
 	this.placeholder = placeholder;
 
 	// create container
-	createDisciplineContainer(this.toggle_id, this.discipline_id, this.label, this.placeholder)
+	createDisciplineContainer(this.toggle_id, this.discipline_id, this.label, this.name, this.placeholder)
 
 	// hide first
 	$( '#' + this.discipline_id + '' ).hide()
@@ -26,7 +27,7 @@ function addToggle(toggle_id, discipline_id){
 	});
 }
 
-function createDisciplineContainer(toggle_id, discipline_id, discipline_label, placeholder){
+function createDisciplineContainer(toggle_id, discipline_id, discipline_label, name, placeholder){
 
 				console.log(placeholder)
 				$("#container_disciplines").append(
@@ -49,9 +50,9 @@ function createDisciplineContainer(toggle_id, discipline_id, discipline_label, p
 							<!-- -->\
 							<!-- textbox with browse button-->\
 							<div class="input-group mb-3" id=' + discipline_id + '>\
-								<input type="text" class="form-control" placeholder="' + placeholder + '">\
+								<input type="text" name="'+ name + '" class="form-control" placeholder="' + placeholder + '">\
 								<div class="input-group-append">\
-									<button class="btn btn-outline-secondary" type="button">Browse</button>\
+									<button class="btn btn-outline-secondary" id="browse-dir-test" type="button">Browse</button>\
 								</div>\
 							</div>\
 						</div>\
@@ -124,11 +125,11 @@ $(function(){
 		})
 
 		// initialize and add discipline containers
-		var discipline_cfd = new discipline('toggle_cfd', 'div_discipline_cfd', 'CFD - Aerodynamics', 'Choose GAT3003 directory')
-		var discipline_cfd = new discipline('toggle_cad', 'div_discipline_cad', 'CAD - Geometry', 'Choose S-Blade directory')
-		var discipline_cfd = new discipline('toggle_cht', 'div_discipline_cht', 'CHT - Heat Transfer', 'Choose CHT directory')
-		var discipline_cfd = new discipline('toggle_mil', 'div_discipline_mil', 'MIL - Mechanical Integrity & Lifing', 'Choose MIL directory')
-		var discipline_cfd = new discipline('toggle_aem', 'div_discipline_aem', 'AEM - Aeromechanics', 'Choose GAT3003 directory')
+		var discipline_cfd = new discipline('toggle_cfd', 'div_discipline_cfd', 'CFD - Aerodynamics', 'dir_cfd', 'Choose GAT3003 directory')
+		var discipline_cfd = new discipline('toggle_cad', 'div_discipline_cad', 'CAD - Geometry', 'dir_cad','Choose S-Blade directory')
+		var discipline_cfd = new discipline('toggle_cht', 'div_discipline_cht', 'CHT - Heat Transfer', 'dir_cht','Choose CHT directory')
+		var discipline_cfd = new discipline('toggle_mil', 'div_discipline_mil', 'MIL - Mechanical Integrity & Lifing', 'dir_mil','Choose MIL directory')
+		var discipline_cfd = new discipline('toggle_aem', 'div_discipline_aem', 'AEM - Aeromechanics', 'dir_aem', 'Choose GAT3003 directory')
 
 		// Count input
     $(".quantity span").on("click", function() {
