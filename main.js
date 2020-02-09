@@ -18,7 +18,8 @@ function createWindow () {
   win.maximize(); //full screen
 
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'landing_page.html'),
+    // pathname: path.join(__dirname, 'landing_page.html'),
+    pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }));

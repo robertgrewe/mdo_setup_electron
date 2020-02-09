@@ -69,9 +69,20 @@
 					</div>
 				</div>
 
-				<p style="padding: 40px">
-					<a href="#" id="create" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Create setup</a>
-				</p>
+				<div class="">
+
+				</div>
+
+				<div style="display: grid; justify-content: center;">
+					<div class="form-row">
+
+						<p >
+							<img class="progress" src="images/progress.gif" alt="...">
+							Copying files lksdjf lsadkfj sadf
+						</p>
+
+					</div>
+				</div>
 
 			</section>
 
@@ -84,13 +95,13 @@
 
 					<div class="div0-logo">
 						<div class="img-thumbnail div-logo">
-							<img class="img-logo selected" src="images/Heeds_logo.png" alt="...">
+							<img class="img-logo selected" name='HEEDs' src="images/Heeds_logo.png" alt="...">
 						</div>
 					</div>
 
 					<div class="div0-logo">
 						<div class="img-thumbnail div-logo">
-							<img class="img-logo" src="images/AutoOpti_logo.png" alt="...">
+							<img class="img-logo" name='AutoOpti' src="images/AutoOpti_logo.png" alt="...">
 						</div>
 					</div>
 
@@ -139,6 +150,7 @@
 				<h3>Setup finished!</h3>
 
 				<div class="icon-box" style="text-align: center; padding: 40px">
+
 					<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 					<i class="material-icons" style="font-size: 60px;">&#xE876;</i>
 				</div>
@@ -147,6 +159,10 @@
 					<div class="form-row">
 						<p style="padding: 40px">
 							<a href="#" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Open in Terminal</a>
+						</p>
+
+						<p style="padding: 40px">
+							<a href="#" id="create" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Create setup</a>
 						</p>
 
 						<p style="padding: 40px">
@@ -175,8 +191,10 @@
 	// 	});
 	// });
 
+	const path = require('path');
 	const {ipcRenderer} = require('electron');
 
+	// when document is loaded do the following ...
 	$( document ).ready(function() {
 		$('#choose-dir').click(function () {
 			selectFolder();
@@ -191,8 +209,10 @@
 			collectFormData()
 		});
 
-	});
+		console.log('Current directory: ' + process.cwd());
+		$('#input-work-dir').val(process.cwd())
 
+	});
 
 	function selectFolder() {
 		ipcRenderer.send('openFolder', () => {
@@ -201,70 +221,23 @@
 	}
 
 	ipcRenderer.on('folderData', (event, data) => {
-		console.log(data)
-		document.getElementById('input-work-dir').value = data[0]
-		// $( "input#input-work-dir" ).val(data[0]) jquery alternative
+		// show chosen directory path in text box
+		$( "input#input-work-dir" ).val(data[0])
+		console.log(`Working directory changed to: ${data[0]}`)
 	})
 
-	// write data to file
-	function writeToFile(filename, content){
-		var fs = require('fs');
-		fs.writeFile(filename, content, function (err) {
-			if (err) throw err;
-			console.log(content);
-		});
-	}
+	// // write data to file
+	// function writeToFile(filename, content){
+	// 	var fs = require('fs');
+	// 	fs.writeFile(filename, content, function (err) {
+	// 		if (err) throw err;
+	// 		console.log(content);
+	// 	});
+	// }
 
-	// collect form data
-	function collectFormData(){
-
-		// var content_array = $('form').serializeArray()
-		// console.log(content_array[0].name, content_array[0].value)
-
-		var row = $('#row').text()
-
-		// create example yml data
-		let data = {
-			dirname: 'myTurbineProcessChain',
-			optimizer: 'HEEDs',
-			Optifoil:  {
-				set_config_resolution: 'single_row',
-				rows: ['r4'],
-			},
-			analysis_row: row,
-			setups: {
-				OP1: {
-					CFD: {
-						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
-					},
-					CAD: {
-						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
-					},
-					CHT: {
-						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
-					},
-					MIL: {
-						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
-					},
-					AEM: {
-						path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
-					},
-				},
-			},
-		};
-
-		// write.js
-		const fs = require('fs');
-		const yaml = require('js-yaml');
-
-		let yamlStr = yaml.safeDump(data);
-		var filename_config = 'config_new.yml'
-		fs.writeFileSync(filename_config, yamlStr, 'utf8');
-
-		var content = JSON.stringify(content_array)
-		// writeToFile(filename, content)
-		// console.log("Data written to config.yml.")
-	}
+	// var content = JSON.stringify(content_array)
+	// writeToFile(filename, content)
+	// console.log("Data written to config.yml.")
 
 	</script>
 
