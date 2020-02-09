@@ -64,7 +64,7 @@ img {
       width: 100px;
       height: 100px;
       background: none;
-      /* filter: grayscale(100%) */
+      margin:auto;
     }
 
 /* logos */
@@ -209,6 +209,10 @@ h3 {
   letter-spacing: 2px;
   margin-bottom: 29px;
   font-weight: 900; }
+
+h3.inactive {
+  color: #999999;
+}
 
 .form-row {
   display: flex;
