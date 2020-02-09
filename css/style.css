@@ -60,6 +60,13 @@ img {
   max-width: 100%;
   vertical-align: middle; }
 
+.progress{
+      width: 100px;
+      height: 100px;
+      background: none;
+      /* filter: grayscale(100%) */
+    }
+
 /* logos */
 .div-logo{
   display: block;<
