@@ -1,4 +1,62 @@
+// default settings
 var currentTab = 0; // Current tab is set to be the first tab (0)
+var optimizer = 'HEEDs'
+var row = $('#row').text()
+
+// collect form data
+function collectFormData(){
+
+  // create example yml data
+  let data = {
+    dirname: 'myTurbineProcessChain',
+    optimizer: optimizer,
+    Optifoil:  {
+      set_config_resolution: 'single_row',
+      rows: [row],
+    },
+    analysis_row: row,
+    setups: {
+      OP1: {
+        CFD: {
+          path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
+        },
+        CAD: {
+          path_to_CAD_FILE: './INPUT/CFD/GAT3003_SID',
+        },
+        CHT: {
+          path_to_CHT_EXPORT: './INPUT/CFD/GAT3003_SID',
+        },
+        MIL: {
+          path_to_MIL_EXPORT: './INPUT/CFD/GAT3003_SID',
+        },
+        AEM: {
+          path_to_GAT3003_SID_CASE: './INPUT/CFD/GAT3003_SID',
+        },
+      },
+    },
+  };
+
+  // write.js
+  const fs = require('fs');
+  const yaml = require('js-yaml');
+
+  let yamlStr = yaml.safeDump(data);
+
+  // definitions
+  var filename_config = 'config.yml'
+  var pathname_wkdir = $('#input-work-dir').val()
+  var filepath_config = path.join(pathname_wkdir, filename_config)
+
+  console.log('Writting config file ...')
+  console.log(yamlStr)
+  fs.writeFileSync(filepath_config, yamlStr, 'utf8');
+  console.log('Configuration file written to: ' + filepath_config)
+
+}
+
+function test(){
+  console.log("Test")
+}
 
 // define discipline constructor
 function discipline(toggle_id, discipline_id, label, name, placeholder) {
@@ -98,6 +156,10 @@ $(function(){
 		$( ".img-logo" ).click(function() {
 			$(".img-logo").removeClass("selected");
 			$(this).addClass("selected");
+
+      // store selected optimizer
+      optimizer = $(this).attr("name")
+      console.log(`\'${optimizer}\' chosen as optimizer.`)
 		});
 
 		// arrows responsiveness in row name text box
@@ -113,15 +175,17 @@ $(function(){
 		// when arrow_up clicked
 		$('#arrow_upp').click(function(){
 			rows = arrayRotate(rows);	// move through row
-			$("#row").text(rows[0]);
-			// console.log(rows[0])
+      row = rows[0]
+			$("#row").text(row);
+			console.log(`Row changed to: ${row}`)
 		})
 
 		// when arrow_down clicked
 		$('#arrow_down').click(function(){
 			rows = arrayRotate(rows, true);	// move through row
+      row = rows[0]
 			$("#row").text(rows[0]);
-			// console.log(rows[0])
+      console.log(`Row changed to: ${row}`)
 		})
 
 		// initialize and add discipline containers
