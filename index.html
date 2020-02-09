@@ -69,21 +69,6 @@
 					</div>
 				</div>
 
-				<div class="">
-
-				</div>
-
-				<div style="display: grid; justify-content: center;">
-					<div class="form-row">
-
-						<p >
-							<img class="progress" src="images/progress.gif" alt="...">
-							Copying files lksdjf lsadkfj sadf
-						</p>
-
-					</div>
-				</div>
-
 			</section>
 
 			<!-- SECTION 0 -->
@@ -147,10 +132,13 @@
 			<!-- SECTION 0 -->
 			<h4></h4>
 			<section>
-				<h3>Setup finished!</h3>
+				<h3 id="h3_last">Setup finished!</h3>
+
+				<div id="progress" style="display: grid; justify-content: center;">
+					<img class="progress" src="images/pulse.gif" alt="...">
+				</div>
 
 				<div class="icon-box" style="text-align: center; padding: 40px">
-
 					<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 					<i class="material-icons" style="font-size: 60px;">&#xE876;</i>
 				</div>
@@ -159,10 +147,6 @@
 					<div class="form-row">
 						<p style="padding: 40px">
 							<a href="#" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Open in Terminal</a>
-						</p>
-
-						<p style="padding: 40px">
-							<a href="#" id="create" class="btn btn-my"><span class="fas fa-terminal" style="padding-right: 10px;"></span>Create setup</a>
 						</p>
 
 						<p style="padding: 40px">
@@ -196,6 +180,7 @@
 
 	// when document is loaded do the following ...
 	$( document ).ready(function() {
+
 		$('#choose-dir').click(function () {
 			selectFolder();
 		});
@@ -205,9 +190,14 @@
 			console.log("browse-dir-test");
 		});
 
-		$('#create').click(function () {
-			collectFormData()
-		});
+		// $('#create').click(function () {
+		// 	collectFormData()
+		// });
+
+		// last step event
+    // $('#last_step').show(function() {
+    //   alert("Last step")
+    // });
 
 		console.log('Current directory: ' + process.cwd());
 		$('#input-work-dir').val(process.cwd())

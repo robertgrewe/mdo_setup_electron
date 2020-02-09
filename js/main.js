@@ -2,6 +2,7 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 var optimizer = 'HEEDs'
 var row = $('#row').text()
+var string_back_button = ""
 
 // collect form data
 function collectFormData(){
@@ -47,15 +48,11 @@ function collectFormData(){
   var pathname_wkdir = $('#input-work-dir').val()
   var filepath_config = path.join(pathname_wkdir, filename_config)
 
-  console.log('Writting config file ...')
+  console.log('Writing config file ...')
   console.log(yamlStr)
   fs.writeFileSync(filepath_config, yamlStr, 'utf8');
   console.log('Configuration file written to: ' + filepath_config)
 
-}
-
-function test(){
-  console.log("Test")
 }
 
 // define discipline constructor
@@ -83,6 +80,18 @@ function addToggle(toggle_id, discipline_id){
 			// Animation complete.
 		});
 	});
+}
+
+// 'show' back Button
+function showBackButton(){
+  // console.log("Show back button ...")
+  $('a[href$="previous"]').text("Back")
+}
+
+// 'hide' back Button
+function hideBackButton(){
+  // console.log("Hide back button ...")
+  $('a[href$="previous"]').text("")
 }
 
 function createDisciplineContainer(toggle_id, discipline_id, discipline_label, name, placeholder){
@@ -127,18 +136,64 @@ $(function(){
         enableAllSteps: true,
         transitionEffectSpeed: 300,
 				enableFinishButton: false,
+        startIndex: 0,
         labels: {
             next: "Next",
             previous: "Back",
-            finish: 'Proceed to checkout'
+            finish: 'Finish'
         },
         onStepChanging: function (event, currentIndex, newIndex) {
+
+            // console.log("Current index: " + currentIndex)
+            // console.log("New index: " + newIndex)
+            currentTab = (newIndex + 1)
+            console.log("Current step number: " + currentTab)
 
 						$(".step_circles").removeClass("active")
 						$(".step_circles").slice(0,newIndex+1).addClass("active")
 
+            // back button
+            if (newIndex == 0){hideBackButton()}else {showBackButton()}
+
+            // on last step do ...
+            // TODO: Bad implemenation!!!
+            if (currentTab == $(type='section').length) {
+
+              // setup start screen
+              $("#h3_last").addClass("inactive")
+              $("#h3_last").text("Setting up process chain ...")
+              $(".icon-box").hide()
+              $("#progress").show()
+
+              // write config file
+              // collectFormData()
+
+              // run init_optimization_turbine
+
+              // pretend that something is running
+              setTimeout(function(){
+                console.log("Timer done")
+                // shown final screen
+                $("#h3_last").removeClass("inactive")
+                $("#h3_last").text("Setup finished!")
+                $("#progress").hide()
+                $(".icon-box").show()
+              },5000);
+
+            }
+
             return true;
-        }
+        },
+        onInit: function (event, currentIndex) {
+            hideBackButton()
+        },
+        onFinishing: function (event, currentIndex) {
+          alert("onFinishing")
+          return true;
+        },
+        onFinished: function (event, currentIndex) {
+          alert("onFinish")
+        },
     });
 
     // Custom Button Jquery Steps
