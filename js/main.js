@@ -4,7 +4,6 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 // form to var assignment
 var optimizer = 'HEEDs'
 var row = $('#row').text()
-var pathname_aem = $('#pathname_cfd').val()
 
 // collect form data
 function collectFormData(){

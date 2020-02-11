@@ -19,7 +19,7 @@ function createWindow () {
                           })
   //win.setMenu(null); //switch off menu
   win.maximize(); //full screen
-  win.webContents.openDevTools(); // start dev tools by default
+  // win.webContents.openDevTools(); // start dev tools by default
 
   win.loadURL(url.format({
     // pathname: path.join(__dirname, 'landing_page.html'),
