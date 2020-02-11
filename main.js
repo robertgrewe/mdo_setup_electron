@@ -12,10 +12,14 @@ function createWindow () {
 
   win = new BrowserWindow({width: 1200,
                           height: 700,
+                          webPreferences: {
+                                devTools: true
+                              },
                           // icon: __dirname + ‘/images/favicon.png’ // does not work!!!
                           })
   //win.setMenu(null); //switch off menu
   win.maximize(); //full screen
+  win.webContents.openDevTools(); // start dev tools by default
 
   win.loadURL(url.format({
     // pathname: path.join(__dirname, 'landing_page.html'),

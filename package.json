@@ -13,6 +13,7 @@
     "package-linux": "electron-packager . mdo-setup-app --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
   },
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "js-yaml": "^3.13.1"
   }
 }

@@ -1,14 +1,16 @@
 // default settings
 var currentTab = 0; // Current tab is set to be the first tab (0)
+
+// form to var assignment
 var optimizer = 'HEEDs'
 var row = $('#row').text()
-var string_back_button = ""
+var pathname_aem = $('#pathname_cfd').val()
 
 // collect form data
 function collectFormData(){
 
   // create example yml data
-  let data = {
+  let config = {
     dirname: 'myTurbineProcessChain',
     optimizer: optimizer,
     Optifoil:  {
@@ -18,30 +20,38 @@ function collectFormData(){
     analysis_row: row,
     setups: {
       OP1: {
-        CFD: {
-          path_to_GAT3003_SID_EXPORT: './INPUT/CFD/GAT3003_SID',
-        },
-        CAD: {
-          path_to_CAD_FILE: './INPUT/CFD/GAT3003_SID',
-        },
-        CHT: {
-          path_to_CHT_EXPORT: './INPUT/CFD/GAT3003_SID',
-        },
-        MIL: {
-          path_to_MIL_EXPORT: './INPUT/CFD/GAT3003_SID',
-        },
-        AEM: {
-          path_to_GAT3003_SID_CASE: './INPUT/CFD/GAT3003_SID',
-        },
       },
     },
   };
+
+  // add discipline paths
+  // TODO: Convert to loop
+  // TODO: Check if paths are valid/exist
+  // TODO: Only write if 'enabled'
+  config.setups.OP1.CFD = {}
+  config.setups.OP1.CFD.path_to_GAT3003_SID_EXPORT = $('#pathname_cfd').val()
+
+  config.setups.OP1.CAD = {}
+  config.setups.OP1.CAD.path_to_CAD_EXPORT = $('#pathname_cad').val()
+
+  config.setups.OP1.CHT = {}
+  config.setups.OP1.CHT.path_to_CHT_EXPORT = $('#pathname_cht').val()
+
+  config.setups.OP1.MIL = {}
+  config.setups.OP1.MIL.path_to_MIL_EXPORT = $('#pathname_mil').val()
+
+  config.setups.OP1.AEM = {}
+  config.setups.OP1.AEM.path_to_GAT3003_SID_CASE = $('#pathname_aem').val()
+
+  // config.mykey.myentry = 'mysecondentry'
+
+  console.log(config)
 
   // write.js
   const fs = require('fs');
   const yaml = require('js-yaml');
 
-  let yamlStr = yaml.safeDump(data);
+  let yamlStr = yaml.safeDump(config);
 
   // definitions
   var filename_config = 'config.yml'
@@ -117,7 +127,7 @@ function createDisciplineContainer(toggle_id, discipline_id, discipline_label, n
 							<!-- -->\
 							<!-- textbox with browse button-->\
 							<div class="input-group mb-3" id=' + discipline_id + '>\
-								<input type="text" name="'+ name + '" class="form-control" placeholder="' + placeholder + '">\
+								<input type="text" id="'+ name + '" class="form-control" placeholder="' + placeholder + '">\
 								<div class="input-group-append">\
 									<button class="btn btn-outline-secondary" id="browse-dir-test" type="button">Browse</button>\
 								</div>\
@@ -166,7 +176,7 @@ $(function(){
               $("#progress").show()
 
               // write config file
-              // collectFormData()
+              collectFormData()
 
               // run init_optimization_turbine
 
@@ -244,11 +254,11 @@ $(function(){
 		})
 
 		// initialize and add discipline containers
-		var discipline_cfd = new discipline('toggle_cfd', 'div_discipline_cfd', 'CFD - Aerodynamics', 'dir_cfd', 'Choose GAT3003 directory')
-		var discipline_cfd = new discipline('toggle_cad', 'div_discipline_cad', 'CAD - Geometry', 'dir_cad','Choose S-Blade directory')
-		var discipline_cfd = new discipline('toggle_cht', 'div_discipline_cht', 'CHT - Heat Transfer', 'dir_cht','Choose CHT directory')
-		var discipline_cfd = new discipline('toggle_mil', 'div_discipline_mil', 'MIL - Mechanical Integrity & Lifing', 'dir_mil','Choose MIL directory')
-		var discipline_cfd = new discipline('toggle_aem', 'div_discipline_aem', 'AEM - Aeromechanics', 'dir_aem', 'Choose GAT3003 directory')
+		var discipline_cfd = new discipline('toggle_cfd', 'div_discipline_cfd', 'CFD - Aerodynamics', 'pathname_cfd', 'Choose GAT3003 directory')
+		var discipline_cfd = new discipline('toggle_cad', 'div_discipline_cad', 'CAD - Geometry', 'pathname_cad','Choose S-Blade directory')
+		var discipline_cfd = new discipline('toggle_cht', 'div_discipline_cht', 'CHT - Heat Transfer', 'pathname_cht','Choose CHT directory')
+		var discipline_cfd = new discipline('toggle_mil', 'div_discipline_mil', 'MIL - Mechanical Integrity & Lifing', 'pathname_mil','Choose MIL directory')
+		var discipline_cfd = new discipline('toggle_aem', 'div_discipline_aem', 'AEM - Aeromechanics', 'pathname_aem', 'Choose GAT3003 directory')
 
 		// Count input
     $(".quantity span").on("click", function() {
