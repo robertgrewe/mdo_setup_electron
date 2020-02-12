@@ -65,16 +65,18 @@ app.on('activate', () => {
 
 const {ipcMain} = require('electron')
 
-ipcMain.on('openFolder', (event, path) => {
- const {dialog} = require('electron')
+ipcMain.on('openFolder', (event, id) => {
+  const {dialog} = require('electron')
+
+  // console.log(id)
 
   dialog.showOpenDialog(win, {
     properties: ['openDirectory']
   },
-    paths => respondWithPath(paths)
+  paths => respondWithPath(paths)
   );
 
-function respondWithPath(paths) {
-  event.sender.send('folderData', paths)
-}
+  function respondWithPath(paths) {
+    event.sender.send('folderData', paths, id)
+  }
 })

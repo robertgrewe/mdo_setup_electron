@@ -128,7 +128,7 @@ function createDisciplineContainer(toggle_id, discipline_id, discipline_label, n
 							<div class="input-group mb-3" id=' + discipline_id + '>\
 								<input type="text" id="'+ name + '" class="form-control" placeholder="' + placeholder + '">\
 								<div class="input-group-append">\
-									<button class="btn btn-outline-secondary" id="browse-dir-test" type="button">Browse</button>\
+									<button class="btn btn-outline-secondary" id=browse_' + name + ' type="button">Browse</button>\
 								</div>\
 							</div>\
 						</div>\

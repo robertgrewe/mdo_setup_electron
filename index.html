@@ -181,39 +181,43 @@
 	// when document is loaded do the following ...
 	$( document ).ready(function() {
 
-		$('#choose-dir').click(function () {
-			selectFolder();
-		});
-
-		$('#choose-dir-test').click(function () {
-			selectFolder();
-			console.log("browse-dir-test");
-		});
-
-		// $('#create').click(function () {
-		// 	collectFormData()
-		// });
-
-		// last step event
-    // $('#last_step').show(function() {
-    //   alert("Last step")
-    // });
-
 		console.log('Current directory: ' + process.cwd());
 		$('#input-work-dir').val(process.cwd())
 
+		$('#choose-dir').click(function () {
+			selectFolder("#input-work-dir");
+		});
+
+		// TODO: Remove duplicate code below
+		$('#browse_pathname_cfd').click(function () {
+			selectFolder("#pathname_cfd");
+		});
+
+		$('#browse_pathname_cad').click(function () {
+			selectFolder("#pathname_cad");
+		});
+
+		$('#browse_pathname_cht').click(function () {
+			selectFolder("#pathname_cht");
+		});
+
+		$('#browse_pathname_mil').click(function () {
+			selectFolder("#pathname_mil");
+		});
+
+		$('#browse_pathname_aem').click(function () {
+			selectFolder("#pathname_aem");
+		});
+
 	});
 
-	function selectFolder() {
-		ipcRenderer.send('openFolder', () => {
-			console.log("Event sent.");
-		});
+	function selectFolder(id) {
+		ipcRenderer.send('openFolder', id);
 	}
 
-	ipcRenderer.on('folderData', (event, data) => {
-		// show chosen directory path in text box
-		$( "input#input-work-dir" ).val(data[0])
-		console.log(`Working directory changed to: ${data[0]}`)
+	ipcRenderer.on('folderData', (event, data, id) => {
+		$( id ).val(data[0]) 		// show chosen directory path in text box with id ...
+		console.log(`Directory changed to: ${data[0]}`)
 	})
 
 	// // write data to file
