@@ -26,23 +26,32 @@ function collectFormData(){
   // add discipline paths
   // TODO: Convert to loop
   // TODO: Check if paths are valid/exist
-  // TODO: Only write if 'enabled'
-  config.setups.OP1.CFD = {}
-  config.setups.OP1.CFD.path_to_GAT3003_SID_EXPORT = $('#pathname_cfd').val()
+  
+  if ( $("#toggle_cfd").is(":checked") ) {
+    config.setups.OP1.CFD = {}
+    config.setups.OP1.CFD.path_to_GAT3003_SID_EXPORT = $('#pathname_cfd').val()
+  }
 
-  config.setups.OP1.CAD = {}
-  config.setups.OP1.CAD.path_to_CAD_EXPORT = $('#pathname_cad').val()
+  if ( $("#toggle_cad").is(":checked") ) {
+    config.setups.OP1.CAD = {}
+    config.setups.OP1.CAD.path_to_CAD_EXPORT = $('#pathname_cad').val()
+  }
 
-  config.setups.OP1.CHT = {}
-  config.setups.OP1.CHT.path_to_CHT_EXPORT = $('#pathname_cht').val()
+  if ( $("#toggle_cht").is(":checked") ) {
+    config.setups.OP1.CHT = {}
+    config.setups.OP1.CHT.path_to_CHT_EXPORT = $('#pathname_cht').val()
+  }
 
-  config.setups.OP1.MIL = {}
-  config.setups.OP1.MIL.path_to_MIL_EXPORT = $('#pathname_mil').val()
+  if ( $("#toggle_mil").is(":checked") ) {
+    config.setups.OP1.MIL = {}
+    config.setups.OP1.MIL.path_to_MIL_EXPORT = $('#pathname_mil').val()
+  }
 
-  config.setups.OP1.AEM = {}
-  config.setups.OP1.AEM.path_to_GAT3003_SID_CASE = $('#pathname_aem').val()
+  if ( $("#toggle_aem").is(":checked") ) {
+    config.setups.OP1.AEM = {}
+    config.setups.OP1.AEM.path_to_GAT3003_SID_CASE = $('#pathname_aem').val()
+  }
 
-  // config.mykey.myentry = 'mysecondentry'
 
   console.log(config)
 
