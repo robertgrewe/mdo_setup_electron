@@ -207,6 +207,11 @@
 			selectFolder("#pathname_aem");
 		});
 
+		$('#btn_terminal').click(function () {
+			openTerminal($('#input-work-dir').val());
+		});
+
+
 	});
 
 	function selectFolder(id) {
@@ -217,6 +222,12 @@
 		$( id ).val(data[0]) 		// show chosen directory path in text box with id ...
 		console.log(`Directory changed to: ${data[0]}`)
 	})
+
+	function openTerminal(pathname){
+		var child_process = require('child_process');
+		child_process.exec("start cmd.exe /K cd /D " + pathname); // windows
+		child_process.exec("terminal /K cd /D " + pathname); // linux
+
 
 	// // write data to file
 	// function writeToFile(filename, content){
