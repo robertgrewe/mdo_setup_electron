@@ -1,6 +1,10 @@
 // default settings
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
+// default view
+// $("#btn_terminal").hide()
+// $("#btn_heeds").hide()
+
 // form to var assignment
 var optimizer = 'HEEDs'
 var row = $('#row').text()
@@ -26,7 +30,7 @@ function collectFormData(){
   // add discipline paths
   // TODO: Convert to loop
   // TODO: Check if paths are valid/exist
-  
+
   if ( $("#toggle_cfd").is(":checked") ) {
     config.setups.OP1.CFD = {}
     config.setups.OP1.CFD.path_to_GAT3003_SID_EXPORT = $('#pathname_cfd').val()
@@ -182,6 +186,8 @@ $(function(){
               $("#h3_last").text("Setting up process chain ...")
               $(".icon-box").hide()
               $("#progress").show()
+              $("#btn_terminal").addClass("disabled")
+              $("#btn_heeds").addClass("disabled")
 
               // write config file
               collectFormData()
@@ -196,6 +202,9 @@ $(function(){
                 $("#h3_last").text("Setup finished!")
                 $("#progress").hide()
                 $(".icon-box").show()
+                $("#btn_terminal").removeClass("disabled")
+                $("#btn_heeds").removeClass("disabled")
+
               },5000);
 
             }
@@ -233,6 +242,14 @@ $(function(){
       // store selected optimizer
       optimizer = $(this).attr("name")
       console.log(`\'${optimizer}\' chosen as optimizer.`)
+
+      if (optimizer == 'HEEDs'){
+        $("#btn_heeds").show()
+      }
+        else {
+        $("#btn_heeds").hide()
+        }
+
 		});
 
 		// arrows responsiveness in row name text box

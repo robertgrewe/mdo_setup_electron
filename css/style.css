@@ -145,6 +145,12 @@ img {
   background-color: #da6e33;
 }
 
+.btn-my.disabled [type="button"]:disabled {
+  border: 2px dashed #ff9411;
+  background-color: #4b0c6d;
+  color: #ffff;
+}
+
 .wizard {
   position: relative; }
 
