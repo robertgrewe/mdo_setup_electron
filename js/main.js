@@ -193,20 +193,20 @@ $(function(){
               collectFormData()
 
               // run init_optimization_turbine
+              initOptimization()
 
-
-              // pretend that something is running
-              setTimeout(function(){
-                console.log("Timer done")
-                // shown final screen
-                $("#h3_last").removeClass("inactive")
-                $("#h3_last").text("Setup finished!")
-                $("#progress").hide()
-                $(".icon-box").show()
-                $("#btn_terminal").removeClass("disabled")
-                $("#btn_heeds").removeClass("disabled")
-
-              },5000);
+              // // pretend that something is running
+              // setTimeout(function(){
+              //   console.log("Timer done")
+              //   // shown final screen
+              //   $("#h3_last").removeClass("inactive")
+              //   $("#h3_last").text("Setup finished!")
+              //   $("#progress").hide()
+              //   $(".icon-box").show()
+              //   $("#btn_terminal").removeClass("disabled")
+              //   $("#btn_heeds").removeClass("disabled")
+              //
+              // },5000);
 
             }
 

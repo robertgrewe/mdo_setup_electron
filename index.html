@@ -211,7 +211,6 @@
 			openTerminal($('#input-work-dir').val());
 		});
 
-
 	});
 
 	function selectFolder(id) {
@@ -225,9 +224,33 @@
 
 	function openTerminal(pathname){
 		var child_process = require('child_process');
-		child_process.exec("start cmd.exe /K cd /D " + pathname); // windows
+		// child_process.exec("start cmd.exe /K cd /D " + pathname); // windows
 		child_process.exec("terminal /K cd /D " + pathname); // linux
+	}
 
+	// initialize optimization
+	function initOptimization() {
+		var pathname_working_directory = $('#input-work-dir').val()
+		console.log("Starting to initialize optimization ...")
+		ipcRenderer.send('InitializeOptimization', pathname_working_directory);
+	}
+
+	ipcRenderer.on('initOptimizationSuccess', (event) => {
+		console.log("Initializing optimization done.")
+		$("#h3_last").removeClass("inactive")
+		$("#h3_last").text("Setup finished!")
+		$("#progress").hide()
+		$(".icon-box").show()
+		$("#btn_terminal").removeClass("disabled")
+		$("#btn_heeds").removeClass("disabled")
+	})
+
+	ipcRenderer.on('initOptimizationFailed', (event) => {
+		console.log("Oops ... something went wrong.")
+		$("#h3_last").removeClass("inactive")
+		$("#h3_last").text("Oops ... something went wrong. Please go back and try again.")
+		$("#progress").hide()
+	})
 
 	// // write data to file
 	// function writeToFile(filename, content){
