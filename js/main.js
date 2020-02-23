@@ -12,15 +12,17 @@ var row = $('#row').text()
 // collect form data
 function collectFormData(){
 
+  var row_lower_case = row.toLowerCase()
+
   // create example yml data
   let config = {
     dirname: 'myTurbineProcessChain',
     optimizer: optimizer,
     Optifoil:  {
-      set_config_resolution: 'single_row',
-      rows: [row],
+      [row_lower_case]: {
+        set_config_resolution: 'single_row',
+      }
     },
-    analysis_row: row,
     setups: {
       OP1: {
       },
@@ -36,19 +38,23 @@ function collectFormData(){
     config.setups.OP1.CFD.path_to_GAT3003_SID_EXPORT = $('#pathname_cfd').val()
   }
 
+  if ( $("#toggle_cad").is(":checked") || $("#toggle_cht").is(":checked") || $("#toggle_mil").is(":checked") ) {
+    config.setups.OP1[row_lower_case] = {}
+  }
+
   if ( $("#toggle_cad").is(":checked") ) {
-    config.setups.OP1.CAD = {}
-    config.setups.OP1.CAD.path_to_CAD_EXPORT = $('#pathname_cad').val()
+    var obj = {'CAD': {'path_to_CAD_EXPORT': $('#pathname_cad').val()}};
+    Object.assign(config.setups.OP1[row_lower_case], obj)
   }
 
   if ( $("#toggle_cht").is(":checked") ) {
-    config.setups.OP1.CHT = {}
-    config.setups.OP1.CHT.path_to_CHT_EXPORT = $('#pathname_cht').val()
+    var obj = {'CHT': {'path_to_CHT_EXPORT': $('#pathname_cht').val()}};
+    Object.assign(config.setups.OP1[row_lower_case], obj)
   }
 
   if ( $("#toggle_mil").is(":checked") ) {
-    config.setups.OP1.MIL = {}
-    config.setups.OP1.MIL.path_to_MIL_EXPORT = $('#pathname_mil').val()
+    var obj = {'MIL': {'path_to_MIL_EXPORT': $('#pathname_mil').val()}};
+    Object.assign(config.setups.OP1[row_lower_case], obj)
   }
 
   if ( $("#toggle_aem").is(":checked") ) {

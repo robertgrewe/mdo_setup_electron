@@ -86,9 +86,9 @@ ipcMain.on('InitializeOptimization', (event, pathname_working_directory) => {
   console.log('Working directory: ' + pathname_working_directory)
 
   // define execution command
-  // exec_command = "opt_tools -v alpha init_optimization_turbine -i config.yml"
+  exec_command = "opt_tools -v alpha init_optimization_turbine -b -i config.yml | tee init_optimization_turbine.log"
   // exec_command = "cd " + pathname_working_directory + " && dir"
-  exec_command = "dir"
+  // exec_command = "dir"
   // exec_command = "FOR /L %N IN () DO @echo Oops"
   // exec_command = "dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir && dir"
   // exec_command = "timeout 5"
