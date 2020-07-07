@@ -4,7 +4,7 @@
   "main": "main.js",
   "productName": "MDO Setup App",
   "devDependencies": {
-    "electron": "^1.6.11",
+    "electron": "^9.1.0",
     "electron-packager": "^14.2.0"
   },
   "scripts": {
